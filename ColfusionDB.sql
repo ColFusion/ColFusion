@@ -97,17 +97,6 @@ CREATE TABLE `colfusion_categories` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `colfusion_categories`
---
-
-INSERT INTO `colfusion_categories` (`category__auto_id`, `category_lang`, `category_id`, `category_parent`, `category_name`, `category_safe_name`, `rgt`, `lft`, `category_enabled`, `category_order`, `category_desc`, `category_keywords`, `category_author_level`, `category_author_group`, `category_votes`, `category_karma`) VALUES
-(0, 'en', 0, 0, 'all', 'all', 7, 0, 2, 0, '', '', 'normal', '', '', ''),
-(1, 'en', 1, 0, 'News', 'News', 4, 3, 1, 1, '', '', 'normal', '', '', ''),
-(2, 'en', 2, 0, 'Business', 'Business', 6, 5, 1, 2, '', '', 'normal', '', '', ''),
-(3, 'en', 3, 0, 'History', 'History', 2, 1, 1, 0, '', '', 'normal', '', '', '');
-
-
---
 -- Table structure for table `colfusion_charts`
 --
 
