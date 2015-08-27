@@ -22,7 +22,8 @@ echo mysql-server mysql-server/root_password_again password $MYSQL_PASSWORD | de
 
 apt-get install -y mysql-server
 
-#service mysql start
+sed -i -e"s/^bind-address\s*=\s*127.0.0.1/bind-address = 0.0.0.0/" /etc/mysql/my.cnf
+service mysql restart
 
 echo "running sql script"
 
@@ -65,8 +66,11 @@ echo "downloading pentaho"
 
 cd /opt
 git clone https://github.com/ColFusion/PentahoKettle.git
-cd PentahoKettle/kettle-data-integration
-nohup ./carte.sh 0.0.0.0 8081 &
+
+echo "start Carte server on port 8081"
+
+cd /opt/PentahoKettle/kettle-data-integration
+nohup ./carte.sh 0.0.0.0 8081 > /opt/carteLog.out 2> /opt/carteError.log < /dev/null &
  
 echo "done"
 
