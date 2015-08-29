@@ -5,12 +5,17 @@ echo "installing apache2"
 apt-get update
 apt-get install -y apache2
 
-#sudo service apache2 restart
+if ! [ -L /var/www ]; then
+  rm -rf /var/www
+  ln -fs /www /var/www
+fi
 
-#if ! [ -L /var/www ]; then
-#  rm -rf /var/www
-#  ln -fs /vagrant /var/www
-#fi
+sudo service apache2 restart
+chmod -R 777 /www/temp
+chmod -R 777 /www/upload_raw_data
+
+rm -R /www/temp/*
+rm -R /www/upload_raw_data/*
 
 
 MYSQL_PASSWORD=thisShouldBeSafeEnough
