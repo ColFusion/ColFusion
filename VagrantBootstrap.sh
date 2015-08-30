@@ -36,11 +36,13 @@ mysql -uroot -p$MYSQL_PASSWORD < /vagrant/ColfusionDb.sql
 
 echo "installing java"
 
-add-apt-repository ppa:webupd8team/java
-apt-get update
-apt-get install -y oracle-java8-installer
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+add-apt-repository -y ppa:webupd8team/java && \
+apt-get update && \
+apt-get install -y oracle-java8-installer \
+oracle-java8-set-default
 
-export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
+export JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
 echo "copying and extracting neo4j"
 
