@@ -6,8 +6,8 @@ apt-get update
 apt-get install -y apache2
 
 if ! [ -L /var/www ]; then
-  rm -rf /var/www
-  ln -fs /www /var/www
+  rm -rf /var/www/html
+  ln -fs /www /var/www/html
 fi
 
 sudo service apache2 restart
@@ -36,7 +36,9 @@ mysql -uroot -p$MYSQL_PASSWORD < /vagrant/ColfusionDb.sql
 
 echo "installing java"
 
-apt-get install -y openjdk-7-jdk
+add-apt-repository ppa:webupd8team/java
+apt-get update
+apt-get install -y oracle-java8-installer
 
 export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64"
 
@@ -62,15 +64,6 @@ echo "creating neo4j indexes"
 
 curl -X POST -H "Content-Type: application/json" -d '{"name":"sources","config":{"provider":"lucene","type":"exact"}}' http://localhost:7474/db/data/index/node
 curl -X POST -H "Content-Type: application/json" -d '{"name":"rels","config":{"provider":"lucene","type":"exact"}}' http://localhost:7474/db/data/index/relationship
-
-echo "installing git"
-
-apt-get install -y git
-
-echo "downloading pentaho"
-
-cd /opt
-git clone https://github.com/ColFusion/PentahoKettle.git
 
 echo "start Carte server on port 8081"
 
