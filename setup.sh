@@ -2,10 +2,10 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
-#git clone https://github.com/ColFusion/ColfusionWeb.git $DIR/
-#git clone https://github.com/ColFusion/ColfusionServer.git $DIR/
-#git clone https://github.com/ColFusion/ColfusionOpenRefine.git $DIR/
-#git clone https://github.com/ColFusion/PentahoKettle.git $DIR/
+git clone https://github.com/ColFusion/ColfusionWeb.git $DIR/
+git clone https://github.com/ColFusion/ColfusionServer.git $DIR/
+git clone https://github.com/ColFusion/ColfusionOpenRefine.git $DIR/
+git clone https://github.com/ColFusion/PentahoKettle.git $DIR/
 
 
 propertiesFile=$DIR"/ColfusionServer/ColFusionServerUtils/src/main/resources/config.properties"
