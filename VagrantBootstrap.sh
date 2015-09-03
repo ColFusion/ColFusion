@@ -32,7 +32,7 @@ service mysql restart
 
 echo "running sql script"
 
-mysql -uroot -p$MYSQL_PASSWORD < /vagrant/ColfusionDb.sql
+mysql -uroot -p$MYSQL_PASSWORD < /vagrant/ColfusionDB.sql
 
 echo "installing java"
 
