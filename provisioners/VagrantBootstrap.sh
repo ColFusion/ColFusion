@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Running VagrantBootstrap script as user: " $(whoami)
+
 echo "installing apache2"
 
 apt-get update
@@ -72,5 +74,11 @@ echo "start Carte server on port 8081"
 cd /opt/PentahoKettle/kettle-data-integration
 nohup ./carte.sh 0.0.0.0 8081 > /opt/carteLog.out 2> /opt/carteError.log < /dev/null &
  
+echo "setting up docker"
+
+wget -qO- https://get.docker.com/ | sh
+
+
+
 echo "done"
 
