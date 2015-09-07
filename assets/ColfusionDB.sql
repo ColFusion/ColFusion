@@ -380,7 +380,7 @@ CREATE TABLE `colfusion_executeinfo` (
   `status` varchar(255) DEFAULT NULL,
   `pan_command` longtext,
   `tableName` longtext NOT NULL,
-  `log` varchar(255) DEFAULT NULL,
+  `log` TEXT DEFAULT NULL,
   PRIMARY KEY (`Eid`),
   KEY `FK_ok0jbkcb90fa4r6jla4akpn9e` (`Sid`),
   CONSTRAINT `FK_ok0jbkcb90fa4r6jla4akpn9e` FOREIGN KEY (`Sid`) REFERENCES `colfusion_sourceinfo` (`Sid`)
