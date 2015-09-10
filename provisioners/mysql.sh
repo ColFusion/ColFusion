@@ -19,8 +19,8 @@ echo "Restarting MySQL"
 
 service mysql restart
 
-echo "Running sql script to create database"
+echo "Running sql script to add database dataverse user"
 
-mysql -uroot -p$MYSQL_PASSWORD < /opt/Colfusion/assets/ColfusionDB.sql
+mysql -uroot -p$MYSQL_PASSWORD < /opt/Colfusion/assets/AddDataverseUserAndCreateColfusionSchema.sql
 
 echo "Done installing MySQL and Setup Colfusion database"
