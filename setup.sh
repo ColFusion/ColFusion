@@ -30,12 +30,4 @@ echo "colfusion.static_files.root_location = $COLFUSION_DIR/Colfusion/assets/www
 echo "colfusion.openrefine.folder = $COLFUSION_DIR/Colfusion/ColfusionOpenRefine/workspace" >> $propertiesFile
 echo "colfusion.openrefine.csv_file_dir = $COLFUSION_DIR/Colfusion/ColfusionOpenRefine/workspace" >> $propertiesFile
 
-echo "Running maven to install all dependencies (skipping running tests)"
-
-cd ColfusionServer
-
-mvn install -DskipTests
-
-echo "Run flyway migrations to setup database tables"
-
-sh ./db_migrate.sh
+echo "Done with setup"

@@ -11,3 +11,13 @@ cd $COLFUSION_DIR/ColfusionWeb
 echo $(pwd)
 
 vagrant up
+
+echo "Running maven to install all dependencies (skipping running tests)"
+
+cd ColfusionServer
+
+mvn install -DskipTests
+
+echo "Run flyway migrations to setup database tables"
+
+sh ./db_migrate.sh
