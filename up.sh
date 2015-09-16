@@ -2,15 +2,13 @@
 
 COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
-echo $(pwd)
+pwd
 
 vagrant up
 
-COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
-
 cd $COLFUSION_DIR/ColfusionWeb
 
-echo $(pwd)
+pwd
 
 vagrant up
 
