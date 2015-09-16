@@ -22,6 +22,6 @@ mvn install -DskipTests
 
 echo "Run flyway migrations to setup database tables"
 
-cd $COLFUSION_DIR/Colfusion
+cd $COLFUSION_DIR/ColFusion
 
 sh ./db_migrate.sh
