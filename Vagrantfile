@@ -8,12 +8,14 @@ Vagrant.configure(2) do |config|
   # using a specific IP. The host OS is available to the guest
   # at the "192.168.33.1" IP address.
   config.vm.network "private_network", ip: "192.168.33.11"
+  config.vm.network "forwarded_port", guest: 80, host: 50001
 
   config.vm.synced_folder ".", "/opt/Colfusion"
   config.vm.synced_folder "assets/www", "/opt/www"
   config.vm.synced_folder "../ColfusionOpenRefine", "/opt/ColfusionOpenRefine"
   config.vm.synced_folder "../ColfusionServer", "/opt/ColfusionServer"
   config.vm.synced_folder "../PentahoKettle", "/opt/PentahoKettle"
+  config.vm.synced_folder "../ColfusionWeb", "/opt/ColfusionWeb"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false

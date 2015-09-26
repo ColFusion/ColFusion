@@ -6,11 +6,9 @@ pwd
 
 vagrant up
 
-cd $COLFUSION_DIR/ColfusionWeb
-
-pwd
-
-vagrant up
+echo "Clearing cache"
+rm -r "${COLFUSION_DIR}/ColfusionWeb/cache/templates_c"
+mkdir -p "${COLFUSION_DIR}/ColfusionWeb/cache/templates_c"
 
 echo "Running maven to install all dependencies (skipping running tests)"
 
