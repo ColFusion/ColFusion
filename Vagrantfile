@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "1024"
+    vb.memory = "1536"
   end
 
   config.vm.provision "shell", inline: "apt-get update"
@@ -29,4 +29,6 @@ Vagrant.configure(2) do |config|
   config.vm.provision "neo4j", type: "shell", path: "provisioners/neo4j.sh"
   config.vm.provision "carte", type: "shell", path: "provisioners/carte.sh"
   config.vm.provision "docker", type: "shell", path: "provisioners/docker.sh"
+  config.vm.provision "tomcat", type: "shell", path: "provisioners/tomcat.sh"
+  config.vm.provision "maven", type: "shell", path: "provisioners/maven.sh"
 end
