@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+# This script updates a production Colfusion environment
 
 COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
@@ -7,6 +9,7 @@ pwd
 vagrant up
 
 echo "Clearing cache"
+
 rm -r "${COLFUSION_DIR}/ColfusionWeb/cache/templates_c"
 
 echo "Running maven to install all dependencies (skipping running tests)"
