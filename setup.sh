@@ -31,3 +31,4 @@ echo "colfusion.openrefine.folder = $COLFUSION_DIR/ColfusionOpenRefine/workspace
 echo "colfusion.openrefine.csv_file_dir = $COLFUSION_DIR/ColfusionOpenRefine/workspace" >> $propertiesFile
 
 echo "Done with setup"
+
