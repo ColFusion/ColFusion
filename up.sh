@@ -10,7 +10,10 @@ vagrant up
 
 echo "Clearing cache"
 
-rm -r "${COLFUSION_DIR}/ColfusionWeb/cache/templates_c"
+TEMPLATES_C="${COLFUSION_DIR}/ColfusionWeb/cache/templates_c"
+if [ -d "${TEMPLATES_C}" ]; then
+    rm -r "${TEMPLATES_C}"
+fi
 
 echo "Running maven to install all dependencies (skipping running tests)"
 
