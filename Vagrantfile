@@ -8,7 +8,12 @@ Vagrant.configure(2) do |config|
   # using a specific IP. The host OS is available to the guest
   # at the "192.168.33.1" IP address.
   config.vm.network "private_network", ip: "192.168.33.11"
+  
+  # apache
   config.vm.network "forwarded_port", guest: 80, host: 50001
+  
+  # tomcat
+  config.vm.network "forwarded_port", guest: 8080, host: 50002
 
   config.vm.synced_folder ".", "/opt/Colfusion"
   config.vm.synced_folder "assets/www", "/opt/www"

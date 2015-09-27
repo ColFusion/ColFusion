@@ -4,6 +4,8 @@ echo "Running apahce.sh script as user: " $(whoami)
 
 echo "Installing apache2"
 
+# TODO: if elegantly possible, decouple apache installation from setting up ColfusionServer
+
 NEW_HOSTNAME=colfusionweb
 sed -i 's/127.0.0.1.*/127.0.0.1\t'"localhost localhost.localdomain $NEW_HOSTNAME"'/g' /etc/hosts
 echo $NEW_HOSTNAME > /etc/hostname
@@ -12,6 +14,8 @@ service hostname start
 apt-get install -y apache2 sendmail php5 libapache2-mod-php5 php5-mcrypt php5-mysql php5-curl php-pear
 
 cp /opt/Colfusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
+# by default we use the host machine's ColfusionServer
+echo -e '192.168.33.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
 
 cd /etc/apache2/mods-available
 
