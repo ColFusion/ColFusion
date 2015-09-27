@@ -4,7 +4,7 @@ echo "Running neo4j.sh script as user: " $(whoami)
 
 echo "Copying and extracting neo4j"
 
-cp /opt/Colfusion/assets/neo4j-community-1.9.2.tar.gz /opt
+cp /opt/Colfusion/assets/software/neo4j-community-1.9.2.tar.gz /opt
 
 cd /opt
 tar -xzf neo4j-community-1.9.2.tar.gz

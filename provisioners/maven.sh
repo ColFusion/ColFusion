@@ -4,7 +4,7 @@ echo "Running maven.sh script as user: " $(whoami)
 
 echo "Copying and extracting maven"
 
-cp /opt/Colfusion/assets/apache-maven-3.3.3-bin.tar.gz /opt
+cp /opt/Colfusion/assets/software/apache-maven-3.3.3-bin.tar.gz /opt
 
 cd /opt
 tar -xzf apache-maven-3.3.3-bin.tar.gz

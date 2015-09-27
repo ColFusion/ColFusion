@@ -4,7 +4,7 @@ echo "Running tomcat.sh script as user: " $(whoami)
 
 echo "Copying and extracting tomcat"
 
-cp /opt/Colfusion/assets/apache-tomcat-8.0.26.tar.gz /opt
+cp /opt/Colfusion/assets/software/apache-tomcat-8.0.26.tar.gz /opt
 
 cd /opt
 tar -xzf apache-tomcat-8.0.26.tar.gz
