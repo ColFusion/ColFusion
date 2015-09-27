@@ -26,8 +26,4 @@ cp "${TARGET}" "${WEBAPPS}/ColFusionServer.war"
 
 rm -r "${TMP_BUILD_DIR}"
 
-# make sure colfusionserver hostname points here instead of to host machine
-sed -i '/$ID_COLFUSION_SERVER/d' /etc/hosts
-echo -e '127.0.0.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
-
 echo "Done Installing ColfusionServer"
