@@ -15,12 +15,6 @@ if [ -d "${TEMPLATES_C}" ]; then
     rm -r "${TEMPLATES_C}"
 fi
 
-echo "Running maven to install all dependencies (skipping running tests)"
-
-cd $COLFUSION_DIR/ColfusionServer
-
-mvn install -DskipTests
-
 echo "Run flyway migrations to setup database tables"
 
 cd $COLFUSION_DIR/ColFusion

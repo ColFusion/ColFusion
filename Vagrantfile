@@ -28,7 +28,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell", inline: "apt-get update"
-  config.vm.provision "apache", type: "shell", path: "provisioners/apache.sh"
+  config.vm.provision "apache-cfweb", type: "shell", path: "provisioners/apache-cfweb.sh"
   config.vm.provision "mysql", type: "shell", path: "provisioners/mysql.sh"
   config.vm.provision "java", type: "shell", path: "provisioners/java.sh"
   config.vm.provision "neo4j", type: "shell", path: "provisioners/neo4j.sh"
@@ -36,4 +36,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "docker", type: "shell", path: "provisioners/docker.sh"
   config.vm.provision "tomcat", type: "shell", path: "provisioners/tomcat.sh"
   config.vm.provision "maven", type: "shell", path: "provisioners/maven.sh"
+  config.vm.provision "cfserver", type: "shell", path: "provisioners/cfserver.sh"
 end

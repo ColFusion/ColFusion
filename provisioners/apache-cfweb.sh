@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Running apahce.sh script as user: " $(whoami)
+echo "Running apahce-cfweb.sh script as user: " $(whoami)
 
-echo "Installing apache2"
+echo "Installing apache2 and ColfusionWeb"
 
 # TODO: if elegantly possible, decouple apache installation from setting up ColfusionServer
 
@@ -50,4 +50,4 @@ sudo service apache2 restart
 rm -R /opt/www/temp/*
 rm -R /opt/www/upload_raw_data/*
 
-echo "Done installing apache 2"
+echo "Done installing apache 2 and ColfusionWeb"
