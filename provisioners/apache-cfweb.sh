@@ -13,6 +13,10 @@ service hostname start
 
 apt-get install -y apache2 sendmail php5 libapache2-mod-php5 php5-mcrypt php5-mysql php5-curl php-pear
 
+echo 'define(`confDOMAIN_NAME'"'"', `colfusion.exp.sis.pitt.edu'"'"')dnl' >> /etc/mail/sendmail.mc
+m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
+service sendmail restart
+
 cp /opt/Colfusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
 # by default we use the host machine's ColfusionServer
 echo -e '192.168.33.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
