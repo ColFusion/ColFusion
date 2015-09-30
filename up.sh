@@ -15,6 +15,7 @@ until [ -z "$1" ]; do
             echo "Usage: $0 [--prod]"
             echo
             echo "  --prod      Nearly full utilization of hardware"
+            echo "              (requires Linux for underlying commands)"
             echo
             exit 0
             ;;
