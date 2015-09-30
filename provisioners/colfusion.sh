@@ -5,9 +5,12 @@ echo "Running colfusion.sh script as user: " $(whoami)
 
 echo "Installing ColfusionServer"
  
-/etc/rc6.d/K99_stop_tomcat
+# TODO: stop/start tomcat didn't seem to be working.
+# The reason to stop/start is to finish processing existing requests, although
+# I'm not sure that will be the case
+#/etc/rc6.d/K99_stop_tomcat
 /opt/Colfusion/assets/scripts/cfserver.sh
-/etc/init.d/start_tomcat
+#/etc/init.d/start_tomcat
 
 echo "Done Installing ColfusionServer"
 
