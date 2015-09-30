@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 set -o errexit
 
-echo "Running cfserver.sh script as user: " $(whoami)
-
-echo "Installing ColfusionServer"
+# Packages a WAR for ColfusionServer
 
 # Using the war from /opt/ColfusionServer doesn't work. Needs a clean build (and maven deps?)
 
+# Don't remove files after building. Needed for building openrefine.
+
 WEBAPPS="/opt/apache-tomcat-8.0.26/webapps"
 
-TMP_BUILD_DIR="$(mktemp -d)"
-cd "${TMP_BUILD_DIR}"
+mkdir -p /opt/build
+cd /opt/build
+rm -rf ColfusionServer
 
-# alternatively, could git clone
 cp -r /opt/ColfusionServer .
 cd ColfusionServer/
 mvn clean install -DskipTests
@@ -24,6 +24,3 @@ find "${WEBAPPS}" -maxdepth 1 -name "ColFusionServer*" -exec rm -r {} \;
 # to work. e.g., "ColFusionServer##2015-09-27T18:34:00Z.war"
 cp "${TARGET}" "${WEBAPPS}/ColFusionServer.war"
 
-rm -r "${TMP_BUILD_DIR}"
-
-echo "Done Installing ColfusionServer"

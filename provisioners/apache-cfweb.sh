@@ -19,8 +19,12 @@ m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
 service sendmail restart
 
 cp /opt/Colfusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
+
 # by default we use the host machine's ColfusionServer
 echo -e '192.168.33.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
+
+# by default we use the host machine's openrefine
+echo -e '192.168.33.1\topenrefineserver # $ID_OPENREFINE_SERVER' >> /etc/hosts
 
 cd /etc/apache2/mods-available
 

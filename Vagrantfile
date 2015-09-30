@@ -14,6 +14,9 @@ Vagrant.configure(2) do |config|
   
   # tomcat
   config.vm.network "forwarded_port", guest: 8080, host: 50002
+  
+  # openrefine
+  config.vm.network "forwarded_port", guest: 3333, host: 50003
 
   config.vm.synced_folder ".", "/opt/Colfusion"
   config.vm.synced_folder "assets/www", "/opt/www"
@@ -36,5 +39,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "docker", type: "shell", path: "provisioners/docker.sh"
   config.vm.provision "tomcat", type: "shell", path: "provisioners/tomcat.sh"
   config.vm.provision "maven", type: "shell", path: "provisioners/maven.sh"
-  config.vm.provision "cfserver", type: "shell", path: "provisioners/cfserver.sh"
+  config.vm.provision "colfusion", type: "shell", path: "provisioners/colfusion.sh"
 end
