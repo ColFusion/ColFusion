@@ -1,6 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+#############################
+##### Hardware Settings #####
+#############################
+
+# Usage: $ CF_CPUS=2 CF_MEM=3000 vagrant up
+
+cpus = ENV['CF_CPUS']
+if cpus.nil?
+	cpus = 1
+end
+mem = ENV['CF_MEM']
+if mem.nil?
+	mem = 1536
+end
+
 Vagrant.configure(2) do |config|
   config.vm.box = "ubuntu/trusty64"
 
@@ -27,7 +42,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "1536"
+    vb.memory = mem
+    vb.cpus = cpus
   end
 
   config.vm.provision "shell", inline: "apt-get update"
