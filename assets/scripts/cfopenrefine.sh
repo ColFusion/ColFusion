@@ -17,7 +17,9 @@ rm -rf ColfusionOpenRefine
 
 cp -r /opt/ColfusionOpenRefine .
 cd ColfusionOpenRefine/
-mvn clean initialize package -DskipTests
+mvn clean
+mvn initialize
+mvn package -DskipTests
 TARGET="$(ls -t server/target/openrefine-server-*.jar | head -1)"
 
 # TODO: output to log and logrotate...

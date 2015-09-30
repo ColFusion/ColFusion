@@ -15,7 +15,8 @@ rm -rf ColfusionServer
 
 cp -r /opt/ColfusionServer .
 cd ColfusionServer/
-mvn clean install -DskipTests
+mvn clean
+mvn install -DskipTests
 TARGET="$(ls -t ColFusionServerWAR/target/*.war | head -1)"
 
 find "${WEBAPPS}" -maxdepth 1 -name "ColFusionServer*" -exec rm -r {} \;
