@@ -5,9 +5,9 @@ echo "Running colfusion.sh script as user: " $(whoami)
 
 echo "Installing ColfusionServer"
  
-/etc/init.d/tomcat stop
+/etc/rc6.d/K99_stop_tomcat
 /opt/Colfusion/assets/scripts/cfserver.sh
-/etc/init.d/tomcat start
+/etc/init.d/start_tomcat
 
 echo "Done Installing ColfusionServer"
 
