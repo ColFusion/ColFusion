@@ -33,12 +33,13 @@ Vagrant.configure(2) do |config|
   # openrefine
   config.vm.network "forwarded_port", guest: 3333, host: 50003
 
-  config.vm.synced_folder ".", "/opt/Colfusion"
+  config.vm.synced_folder ".", "/opt/Colfusion/ColFusion", create: true
+  config.vm.synced_folder "../ColfusionOpenRefine", "/opt/Colfusion/ColfusionOpenRefine", create: true
+  config.vm.synced_folder "../ColfusionServer", "/opt/Colfusion/ColfusionServer", create: true
+  config.vm.synced_folder "../PentahoKettle", "/opt/Colfusion/PentahoKettle", create: true
+  config.vm.synced_folder "../ColfusionWeb", "/opt/Colfusion/ColfusionWeb", create: true
+  
   config.vm.synced_folder "assets/www", "/opt/www"
-  config.vm.synced_folder "../ColfusionOpenRefine", "/opt/ColfusionOpenRefine"
-  config.vm.synced_folder "../ColfusionServer", "/opt/ColfusionServer"
-  config.vm.synced_folder "../PentahoKettle", "/opt/PentahoKettle"
-  config.vm.synced_folder "../ColfusionWeb", "/opt/ColfusionWeb"
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false

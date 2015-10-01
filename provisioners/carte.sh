@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit
 
 echo "Running carte.sh script as user: " $(whoami)
 
@@ -8,7 +9,7 @@ echo "Setting neo4j to start automatically"
 echo "
 #!/bin/bash
 
-cd /opt/PentahoKettle/kettle-data-integration && nohup ./carte.sh 0.0.0.0 8081 > /opt/carteLog.out 2> /opt/carteError.log < /dev/null &
+cd /opt/Colfusion/PentahoKettle/kettle-data-integration && nohup ./carte.sh 0.0.0.0 8081 > /opt/carteLog.out 2> /opt/carteError.log < /dev/null &
 " > /etc/init.d/start_carte
 
 chmod +x /etc/init.d/start_carte

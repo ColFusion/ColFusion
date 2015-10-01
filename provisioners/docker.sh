@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit
 
 echo "Running docker.sh script as user: " $(whoami)
 

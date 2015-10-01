@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit
 
 echo "Running mysql.sh script as user: " $(whoami)
 
@@ -21,6 +22,6 @@ service mysql restart
 
 echo "Running sql script to add database dataverse user"
 
-mysql -uroot -p$MYSQL_PASSWORD < /opt/Colfusion/assets/scripts/AddDataverseUserAndCreateColfusionSchema.sql
+mysql -uroot -p$MYSQL_PASSWORD < /opt/Colfusion/ColFusion/assets/scripts/AddDataverseUserAndCreateColfusionSchema.sql
 
 echo "Done installing MySQL and Setup Colfusion database"

@@ -13,7 +13,7 @@ mkdir -p /opt/build
 cd /opt/build
 rm -rf ColfusionServer
 
-cp -r /opt/ColfusionServer .
+cp -r /opt/Colfusion/ColfusionServer .
 cd ColfusionServer/
 mvn clean
 mvn install -DskipTests

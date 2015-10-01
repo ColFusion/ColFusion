@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o errexit
 
 echo "Running apahce-cfweb.sh script as user: " $(whoami)
 
@@ -18,7 +19,7 @@ echo 'define(`confDOMAIN_NAME'"'"', `colfusion.exp.sis.pitt.edu'"'"')dnl' >> /et
 m4 /etc/mail/sendmail.mc > /etc/mail/sendmail.cf
 service sendmail restart
 
-cp /opt/Colfusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
+cp /opt/Colfusion/ColFusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
 
 # by default we use the host machine's ColfusionServer
 echo -e '192.168.33.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
@@ -47,7 +48,7 @@ service apache2 restart
 if ! [ -L /var/www ]; then
   rm -rf /var/www
   mkdir /var/www
-  ln -fs /opt/ColfusionWeb /var/www/colfusion
+  ln -fs /opt/Colfusion/ColfusionWeb /var/www/colfusion
   ln -fs /opt/www /var/www/html
 fi
 
@@ -56,7 +57,7 @@ pear install Net_SMTP
 
 sudo service apache2 restart
 
-rm -R /opt/www/temp/*
-rm -R /opt/www/upload_raw_data/*
+rm -R /opt/www/temp/* || true
+rm -R /opt/www/upload_raw_data/* || true
 
 echo "Done installing apache 2 and ColfusionWeb"

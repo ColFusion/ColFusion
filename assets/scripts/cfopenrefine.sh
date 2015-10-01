@@ -15,7 +15,7 @@ mkdir -p /opt/build
 cd /opt/build
 rm -rf ColfusionOpenRefine
 
-cp -r /opt/ColfusionOpenRefine .
+cp -r /opt/Colfusion/ColfusionOpenRefine .
 cd ColfusionOpenRefine/
 mvn clean
 mvn initialize
