@@ -45,9 +45,28 @@ Vagrant.configure(2) do |config|
     vb.gui = false
     vb.memory = mem
     vb.cpus = cpus
-  end
 
+=begin
+	vb.customize ["storagectl", :id,
+    		      "--name", "vboxguestadditions",
+    		      "--remove"]
+=end
+	# how to get the following to run only on first boot? 
+    vb.customize ["storagectl", :id,
+    		      "--name", "vboxguestadditions",
+    		      "--add", "ide",
+    		      "--controller", "PIIX4"]
+    vb.customize ["storageattach", :id,
+                  "--storagectl", "vboxguestadditions",
+                  "--medium", "/usr/share/virtualbox/VBoxGuestAdditions.iso",
+                  "--type", "dvddrive",
+                  "--port", "0",
+                  "--device", "0"]
+
+  end
+  
   config.vm.provision "shell", inline: "apt-get update"
+  config.vm.provision "update-guest-additions", type: "shell", path: "provisioners/update-guest-additions.sh"
   config.vm.provision "apache-cfweb", type: "shell", path: "provisioners/apache-cfweb.sh"
   config.vm.provision "mysql", type: "shell", path: "provisioners/mysql.sh"
   config.vm.provision "java", type: "shell", path: "provisioners/java.sh"
