@@ -4,7 +4,9 @@ set -o errexit
 # Builds openrefine and configures it to start automatically 
 
 # Kill existing processes first (this init script may not exist yet, i.e., for first run)
-/etc/init.d/cfopenrefine stop || true
+if [ -e /etc/init.d/cfopenrefine ]; then
+    /etc/init.d/cfopenrefine stop
+fi
 
 mkdir -p /opt/build
 cd /opt/build

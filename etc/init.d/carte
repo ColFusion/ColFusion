@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
-PID_PATH="/var/run/cfopenrefine.pid"
+PID_PATH="/var/run/carte.pid"
 
 start() {
-    # TODO: output to log and logrotate...
-	nohup java -jar "${TARGET}" &>/dev/null &
+    # TODO: logrotate...
+    mkdir -p /opt/carte
+    cd /opt/Colfusion/PentahoKettle/kettle-data-integration
+    nohup ./carte.sh 0.0.0.0 8081 > /opt/carte/carte.log 2> /opt/carte/error.log < /dev/null &
 	PID="$!"
 	echo "${PID}" > "${PID_PATH}"
 }
@@ -15,10 +17,10 @@ stop() {
         kill "$PID"
         rm "$PID_PATH"
         
-        echo "openrefine stopped"
+        echo "carte stopped"
     else
         ## Program is not running, exit with error.
-        echo "Error! openrefine not started!" 1>&2
+        echo "Error! carte not started!" 1>&2
         exit 1
     fi
 }
