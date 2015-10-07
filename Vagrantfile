@@ -47,8 +47,7 @@ Vagrant.configure(2) do |config|
     vb.cpus = cpus
   end
   
-  config.vm.provision "shell", inline: "apt-get update"
-  #config.vm.provision "shell", inline: "apt-get -y upgrade"
+  config.vm.provision "admin-start", type: "shell", path: "provisioners/admin-start.sh"
   config.vm.provision "update-guest-additions", type: "shell", path: "provisioners/update-guest-additions.sh"
   config.vm.provision "apache-cfweb", type: "shell", path: "provisioners/apache-cfweb.sh"
   config.vm.provision "mysql", type: "shell", path: "provisioners/mysql.sh"
@@ -58,4 +57,5 @@ Vagrant.configure(2) do |config|
   config.vm.provision "tomcat", type: "shell", path: "provisioners/tomcat.sh"
   config.vm.provision "maven", type: "shell", path: "provisioners/maven.sh"
   config.vm.provision "colfusion", type: "shell", path: "provisioners/colfusion.sh"
+  config.vm.provision "admin-end", type: "shell", path: "provisioners/admin-end.sh"
 end

@@ -1,13 +1,25 @@
 #!/usr/bin/env bash
 
+### BEGIN INIT INFO
+# Provides:          cfopenrefine
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start/stop/reload cfopenrefine
+# Description:       start/stop/reload cfopenrefine
+### END INIT INFO
+
 cd "/opt/build/ColfusionOpenRefine/"
 
 PID_PATH="/var/run/cfopenrefine.pid"
 TARGET="$(ls -t server/target/openrefine-server-*.jar | head -1)"
+LOG_DIR="/var/log/colfusion/openrefine"
 
 start() {
-    # TODO: output to log and logrotate...
-	nohup java -jar "${TARGET}" &>/dev/null &
+    # TODO: logrotate...
+    mkdir -p "${LOG_DIR}"
+	nohup java -jar "${TARGET}" >> "${LOG_DIR}/openrefine.log" 2>> "${LOG_DIR}/error.log" < /dev/null &
 	PID="$!"
 	echo "${PID}" > "${PID_PATH}"
 }

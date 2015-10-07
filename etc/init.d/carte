@@ -1,12 +1,23 @@
 #!/usr/bin/env bash
 
+### BEGIN INIT INFO
+# Provides:          carte
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start/stop/reload carte
+# Description:       start/stop/reload carte
+### END INIT INFO
+
 PID_PATH="/var/run/carte.pid"
+LOG_DIR="/var/log/colfusion/carte"
 
 start() {
     # TODO: logrotate...
-    mkdir -p /opt/carte
+    mkdir -p "${LOG_DIR}"
     cd /opt/build/PentahoKettle/kettle-data-integration
-    nohup ./carte.sh 0.0.0.0 8081 >> /opt/carte/carte.log 2>> /opt/carte/error.log < /dev/null &
+    nohup ./carte.sh 0.0.0.0 8081 >> "${LOG_DIR}/carte.log" 2>> "${LOG_DIR}/error.log" < /dev/null &
 	PID="$!"
 	echo "${PID}" > "${PID_PATH}"
 }

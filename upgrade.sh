@@ -3,7 +3,7 @@ set -o errexit
 
 COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
-# Upgrade Services
+# Pulls latest code, and upgrade Services from Host Machine
 
 # TODO: This script currently 1) pulls latest code, and 2) restarts Colfusion services
 #       Switch to 1) shutdown Colfusion services, 2) pull latest code, 3) restart services
@@ -12,5 +12,5 @@ COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
 # Restart Services
 cd "${COLFUSION_DIR}/ColFusion/"
-vagrant ssh -c "sudo /opt/Colfusion/ColFusion/assets/scripts/restart.sh"
+vagrant ssh -c "sudo /opt/Colfusion/ColFusion/assets/scripts/deploy.sh"
 
