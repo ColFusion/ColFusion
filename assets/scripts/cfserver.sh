@@ -32,3 +32,17 @@ find "${WEBAPPS}" -maxdepth 1 -name "ColFusionServer*" -exec rm -r {} \;
 cp "${TARGET}" "${WEBAPPS}/ColFusionServer.war"
 /etc/init.d/tomcat start
 
+# first request is slow, so do it here instead of when live
+STATUS=1
+while [ "${STATUS}" -ne 0 ]; do
+    set +e
+    curl 'http://localhost:8080/ColFusionServer/rest/Story/metadata/license' &>/dev/null
+    STATUS="$?"
+    set -e
+    if [ "${STATUS}" -ne 0 ]; then
+        echo "waiting for server to startup"
+        sleep 1
+    fi
+done
+
+
