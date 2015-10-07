@@ -5,13 +5,13 @@ echo "Running docker.sh script as user: " $(whoami)
 
 echo "Setting up docker"
 
-wget -qO- https://get.docker.com/ | sh
+apt-key add /opt/Colfusion/ColFusion/assets/keys/docker.key
 
 apt-get update
 apt-get -y install linux-image-extra-$(uname -r)
-sh -c "wget -qO- https://get.docker.io/gpg | apt-key add -"
 sh -c "echo deb http://get.docker.io/ubuntu docker main\ > /etc/apt/sources.list.d/docker.list"
 apt-get update
+
 apt-get -y install lxc-docker
 
 
