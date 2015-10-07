@@ -17,10 +17,10 @@ fi
 mkdir -p /opt/build
 cd /opt/build
 echo "Removing existing copy of PentahoKettle..."
-time rm -rf PentahoKettle
+rm -rf PentahoKettle
 
 echo "Creating a copy of PentahoKettle (this could take a few minutes)"
-time cp -r /opt/Colfusion/PentahoKettle .
+cp -r /opt/Colfusion/PentahoKettle .
 
 echo "Setting carte to start automatically"
 
