@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PID_PATH="/var/run/cfopenrefine.pid"
+TARGET="$(ls -t server/target/openrefine-server-*.jar | head -1)"
 
 start() {
     # TODO: output to log and logrotate...
