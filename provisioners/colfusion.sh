@@ -18,11 +18,15 @@ echo "Installing ColfusionServer"
  
 /opt/Colfusion/ColFusion/assets/scripts/cfserver.sh
 
+echo "Done Installing ColfusionServer"
+
 echo "Run flyway migrations to setup database tables"
 
 /opt/Colfusion/ColFusion/assets/scripts/db_migrate.sh
 
-echo "Done Installing ColfusionServer"
+echo "Initializing ColfusionServer"
+
+/opt/Colfusion/ColFusion/assets/scripts/cfserver-init.sh
 
 echo "Installing Open Refine"
 
