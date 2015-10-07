@@ -5,7 +5,7 @@ set -o errexit
 
 # Kill existing processes first (this init script may not exist yet, i.e., for first run)
 if [ -e /etc/init.d/cfopenrefine ]; then
-    /etc/init.d/cfopenrefine stop
+    /etc/init.d/cfopenrefine stop || true
 fi
 
 mkdir -p /opt/build

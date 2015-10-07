@@ -5,8 +5,8 @@ PID_PATH="/var/run/carte.pid"
 start() {
     # TODO: logrotate...
     mkdir -p /opt/carte
-    cd /opt/Colfusion/PentahoKettle/kettle-data-integration
-    nohup ./carte.sh 0.0.0.0 8081 > /opt/carte/carte.log 2> /opt/carte/error.log < /dev/null &
+    cd /opt/build/PentahoKettle/kettle-data-integration
+    nohup ./carte.sh 0.0.0.0 8081 >> /opt/carte/carte.log 2>> /opt/carte/error.log < /dev/null &
 	PID="$!"
 	echo "${PID}" > "${PID_PATH}"
 }
