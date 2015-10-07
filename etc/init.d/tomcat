@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+CATALINA_PATH="/opt/apache-tomcat-8.0.26/bin/catalina.sh"
+
+start() {
+    "${CATALINA_PATH}" start
+}
+
+stop() {
+    "${CATALINA_PATH}" stop
+}
+
+if [ $(whoami) != "root" ]; then
+    echo "Must run as root."
+    exit 1
+fi
+
+case "$1" in
+    start)
+        start
+        exit 0
+    ;;
+    stop)
+        stop
+        exit 0
+    ;;
+    reload|restart|force-reload)
+        stop
+        start
+        exit 0
+    ;;
+    **)
+        echo "Usage: $0 {start|stop|reload}" 1>&2
+        exit 1
+    ;;
+esac

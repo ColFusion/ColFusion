@@ -21,11 +21,13 @@ service sendmail restart
 
 cp /opt/Colfusion/ColFusion/etc/ApacheVirtualHostConfig.conf /etc/apache2/sites-available/
 
-# by default we use the host machine's ColfusionServer
-echo -e '192.168.33.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
+# by default we use the local machine's ColfusionServer
+# change to 192.168.33.1 to use host
+echo -e '127.0.0.1\tcolfusionserver # $ID_COLFUSION_SERVER' >> /etc/hosts
 
-# by default we use the host machine's openrefine
-echo -e '192.168.33.1\topenrefineserver # $ID_OPENREFINE_SERVER' >> /etc/hosts
+# by default we use the local machine's openrefine
+# change to 192.168.33.1 to use host
+echo -e '127.0.0.1\topenrefineserver # $ID_OPENREFINE_SERVER' >> /etc/hosts
 
 cd /etc/apache2/mods-available
 

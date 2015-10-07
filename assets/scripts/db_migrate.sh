@@ -1,6 +1,7 @@
 #!/bin/bash
+set -o errexit
 
-COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
+COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../../.. && pwd )
 
 cd $COLFUSION_DIR/ColfusionServer/ColFusionServerDAL
 

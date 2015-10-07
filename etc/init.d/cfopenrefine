@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+PID_PATH="/var/run/cfopenrefine.pid"
+
+start() {
+    # TODO: output to log and logrotate...
+	nohup java -jar "${TARGET}" &>/dev/null &
+	PID="$!"
+	echo "${PID}" > "${PID_PATH}"
+}
+
+stop() {
+    if [ -e "$PID_PATH" ]; then
+        PID="$(cat "$PID_PATH")"
+        kill "$PID"
+        rm "$PID_PATH"
+        
+        echo "openrefine stopped"
+    else
+        ## Program is not running, exit with error.
+        echo "Error! tomcat not started!" 1>&2
+        exit 1
+    fi
+}
+
+if [ $(whoami) != "root" ]; then
+    echo "Must run as root."
+    exit 1
+fi
+
+case "$1" in
+    start)
+        start
+        exit 0
+    ;;
+    stop)
+        stop
+        exit 0
+    ;;
+    reload|restart|force-reload)
+        stop
+        start
+        exit 0
+    ;;
+    **)
+        echo "Usage: $0 {start|stop|reload}" 1>&2
+        exit 1
+    ;;
+esac

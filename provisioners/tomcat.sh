@@ -12,28 +12,13 @@ tar -xzf apache-tomcat-8.0.26.tar.gz
 
 cd apache-tomcat-8.0.26
 
-echo "Starting tomcat"
-
-bin/catalina.sh start
-
 echo "Setting tomcat to start automatically"
 
-echo "
-#!/bin/bash
+cp /opt/Colfusion/ColFusion/etc/init.d/tomcat /etc/init.d
+update-rc.d tomcat defaults
 
-/opt/apache-tomcat-8.0.26/bin/catalina.sh stop
-" > /etc/rc6.d/K99_stop_tomcat
+echo "Starting tomcat"
 
-chmod +x /etc/rc6.d/K99_stop_tomcat
-
-echo "
-#!/bin/bash
-
-/opt/apache-tomcat-8.0.26/bin/catalina.sh start
-" > /etc/init.d/start_tomcat
-
-chmod +x /etc/init.d/start_tomcat
-
-ln -s /etc/init.d/start_tomcat /etc/rc2.d/S99start_tomcat
+/etc/init.d/tomcat start
 
 echo "Done with tomcat"

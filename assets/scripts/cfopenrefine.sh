@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Starts/Restarts Colfusion's Open Refine
+# Builds openrefine and configures it to start automatically 
 
-PIDFILE="/var/run/cfopenrefine.pid"
-
-# Kill existing processes first
-if [ -e "${PIDFILE}" ]; then
-    OLDPID="$(cat "${PIDFILE}")"
-    kill "${OLDPID}" || true
-fi
+# Kill existing processes first (this init script may not exist yet, i.e., for first run)
+/etc/init.d/cfopenrefine stop || true
 
 mkdir -p /opt/build
 cd /opt/build
@@ -22,9 +17,13 @@ mvn initialize
 mvn package -DskipTests
 TARGET="$(ls -t server/target/openrefine-server-*.jar | head -1)"
 
-# TODO: output to log and logrotate...
-nohup java -jar "${TARGET}" &>/dev/null &
-PID="$!"
-echo "${PID}" > "${PIDFILE}"
+echo "Setting openrefine to start automatically"
 
+cp /opt/Colfusion/ColFusion/etc/init.d/cfopenrefine /etc/init.d
+update-rc.d cfopenrefine defaults
 
+echo "Starting openrefine"
+
+/etc/init.d/cfopenrefine start
+
+echo "Done with openrefine"

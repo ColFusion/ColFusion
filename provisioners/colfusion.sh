@@ -3,21 +3,25 @@ set -o errexit
 
 echo "Running colfusion.sh script as user: " $(whoami)
 
+echo "Clearing cache"
+
+TEMPLATES_C="/opt/Colfusion/ColfusionWeb/cache/templates_c"
+if [ -d "${TEMPLATES_C}" ]; then
+    rm -r "${TEMPLATES_C}"
+fi
+
 echo "Installing ColfusionServer"
  
-# TODO: stop/start tomcat didn't seem to be working.
-# The reason to stop/start is to finish processing existing requests, although
-# I'm not sure that will be the case
-#/etc/rc6.d/K99_stop_tomcat
 /opt/Colfusion/ColFusion/assets/scripts/cfserver.sh
-#/etc/init.d/start_tomcat
+
+echo "Run flyway migrations to setup database tables"
+
+/opt/Colfusion/ColFusion/assets/scripts/db_migrate.sh
 
 echo "Done Installing ColfusionServer"
 
 echo "Installing Open Refine"
 
 /opt/Colfusion/ColFusion/assets/scripts/cfopenrefine.sh
-ln -s /opt/Colfusion/ColFusion/assets/scripts/cfopenrefine.sh /etc/init.d/
-update-rc.d cfopenrefine.sh defaults
 
 echo "Done Installing Open Refine"
