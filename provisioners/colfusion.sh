@@ -3,10 +3,6 @@ set -o errexit
 
 echo "Running colfusion.sh script as user: " $(whoami)
 
-echo "Installing carte"
-
-/opt/Colfusion/ColFusion/assets/scripts/carte.sh
-
 echo "Clearing cache"
 
 TEMPLATES_C="/opt/Colfusion/ColfusionWeb/cache/templates_c"
@@ -19,6 +15,12 @@ echo "Installing ColfusionServer"
 /opt/Colfusion/ColFusion/assets/scripts/cfserver.sh
 
 echo "Done Installing ColfusionServer"
+
+echo "Installing carte"
+
+/opt/Colfusion/ColFusion/assets/scripts/carte.sh
+
+echo "Done Installing carte"
 
 echo "Run flyway migrations to setup database tables"
 
