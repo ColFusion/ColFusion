@@ -11,7 +11,7 @@ while [ "${STATUS}" -ne 0 ]; do
     STATUS="$?"
     set -e
     if [ "${STATUS}" -ne 0 ]; then
-        echo "waiting for server to startup"
+        echo "waiting for server to startup $(date)"
         sleep 1
     fi
 done
