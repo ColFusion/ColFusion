@@ -29,9 +29,8 @@ find "${WEBAPPS}" -maxdepth 1 -name "ColFusionServer*" -exec rm -r {} \;
 # was having problems without changing name to ColFusionServer.war, although I thought that's supposed
 # to work. e.g., "ColFusionServer##2015-09-27T18:34:00Z.war"
 /etc/init.d/tomcat stop || true
+
 cp "${TARGET}" "${WEBAPPS}/ColFusionServer.war"
+
 /etc/init.d/tomcat start
-
-
-
 

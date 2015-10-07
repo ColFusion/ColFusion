@@ -11,13 +11,36 @@
 ### END INIT INFO
 
 CATALINA_PATH="/opt/apache-tomcat-8.0.26/bin/catalina.sh"
+PORT=8080 # only used for querying server on startup/shutdown, not for changing port
 
 start() {
     "${CATALINA_PATH}" start
+    STATUS=1
+    while [ "${STATUS}" -ne 0 ]; do
+	    set +e
+	    curl "http://localhost:${PORT}" &>/dev/null
+	    STATUS="$?"
+	    set -e
+	    if [ "${STATUS}" -ne 0 ]; then
+	        echo "waiting for server to start $(date)"
+	        sleep 1
+	    fi
+	done
 }
 
 stop() {
     "${CATALINA_PATH}" stop
+	STATUS=0
+	while [ "${STATUS}" -eq 0 ]; do
+	    set +e
+	    curl "http://localhost:${PORT}" &>/dev/null
+	    STATUS="$?"
+	    set -e
+	    if [ "${STATUS}" -eq 0 ]; then
+	        echo "waiting for server to shutdown $(date)"
+	        sleep 1
+	    fi
+	done
 }
 
 if [ $(whoami) != "root" ]; then
