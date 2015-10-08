@@ -21,7 +21,7 @@ mvn package -DskipTests
 echo "Setting openrefine to start automatically"
 
 cp /opt/Colfusion/ColFusion/etc/init.d/cfopenrefine /etc/init.d
-update-rc.d cfopenrefine defaults 99 00
+update-rc.d cfopenrefine defaults
 
 echo "Starting openrefine"
 
