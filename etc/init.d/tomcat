@@ -14,7 +14,7 @@ CATALINA_PATH="/opt/apache-tomcat-8.0.26/bin/catalina.sh"
 PORT=8080 # only used for querying server on startup/shutdown, not for changing port
 
 start() {
-    "${CATALINA_PATH}" start
+    nohup "${CATALINA_PATH}" start </dev/null 2>&1 | cat
     STATUS=1
     while [ "${STATUS}" -ne 0 ]; do
 	    set +e
@@ -29,7 +29,7 @@ start() {
 }
 
 stop() {
-    "${CATALINA_PATH}" stop
+    nohup "${CATALINA_PATH}" stop </dev/null 2>&1 | cat
 	STATUS=0
 	while [ "${STATUS}" -eq 0 ]; do
 	    set +e
