@@ -1,0 +1,1 @@
+@reboot	root	sleep 60 && /etc/init.d/cfopenrefine start

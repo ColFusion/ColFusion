@@ -21,7 +21,12 @@ mvn package -DskipTests
 echo "Setting openrefine to start automatically"
 
 cp /opt/Colfusion/ColFusion/etc/init.d/cfopenrefine /etc/init.d
-update-rc.d cfopenrefine defaults
+
+# Note: configuring openrefine to start automatically the conventional way has problems.
+#       There is a NPE until a new table is created.
+#       Delaying startup fixes this issue (20 seconds didn't work, 60 did)
+#update-rc.d cfopenrefine defaults
+cp /opt/Colfusion/ColFusion/etc/cron.d/cfopenrefine /etc/cron.d
 
 echo "Starting openrefine"
 
