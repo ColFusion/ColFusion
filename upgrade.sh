@@ -12,5 +12,5 @@ COLFUSION_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )
 
 # Restart Services
 cd "${COLFUSION_DIR}/ColFusion/"
-vagrant ssh -c "sudo /opt/Colfusion/ColFusion/assets/scripts/deploy.sh"
+vagrant ssh -c "nohup sudo /opt/Colfusion/ColFusion/assets/scripts/deploy.sh 2>&1 </dev/null | cat"
 
