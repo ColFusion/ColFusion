@@ -10,7 +10,7 @@
 # Description:       start/stop/reload tomcat
 ### END INIT INFO
 
-CATALINA_PATH="/opt/apache-tomcat-8.0.26/bin/catalina.sh"
+CATALINA_PATH="/opt/apache-tomcat/bin/catalina.sh"
 PORT=8080 # only used for querying server on startup/shutdown, not for changing port
 
 start() {

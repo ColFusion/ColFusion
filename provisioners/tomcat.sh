@@ -10,6 +10,12 @@ cp /opt/Colfusion/ColFusion/assets/software/apache-tomcat-8.0.26.tar.gz /opt
 cd /opt
 tar -xzf apache-tomcat-8.0.26.tar.gz
 
+if [ -h apache-tomcat ]; then
+      rm apache-tomcat
+fi
+
+ln -s apache-tomcat-8.0.26 apache-tomcat
+
 cd apache-tomcat-8.0.26
 
 echo "Setting tomcat to start automatically"
