@@ -1,0 +1,1 @@
+0 4 * * *	root	/opt/Colfusion/ColFusion/assets/scripts/backup.sh

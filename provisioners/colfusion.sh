@@ -35,3 +35,10 @@ echo "Installing Open Refine"
 /opt/Colfusion/ColFusion/assets/scripts/cfopenrefine.sh
 
 echo "Done Installing Open Refine"
+
+# backups run daily on production
+if [ -e /opt/prod ]; then
+    echo "Scheduling Backups"
+    cp /opt/Colfusion/ColFusion/etc/cron.d/cfbackup /etc/cron.d
+fi
+
