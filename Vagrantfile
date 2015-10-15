@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
   
   # production machines get a file, /opt/prod, to know they're production machines
   if !ENV['PROD'].nil? and ENV['PROD'].eql? "true"
-  	config.vm.provision "colfusion", type: "shell", inline: "touch /opt/prod"
+  	config.vm.provision "prod", type: "shell", inline: "touch /opt/prod"
   end
   config.vm.provision "admin-start", type: "shell", path: "provisioners/admin-start.sh"
   config.vm.provision "update-guest-additions", type: "shell", path: "provisioners/update-guest-additions.sh"
